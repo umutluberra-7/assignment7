@@ -1,5 +1,27 @@
+import { Routes, Route } from "react-router";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import ProductList from "./pages/ProductList";
+import ProductDetail from "./pages/ProductDetail";
+import Cart from "./pages/Cart";
+import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
+
 function App() {
-  return <h1>Shop</h1>;
+  return (
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="products">
+          <Route index element={<ProductList />} />
+          <Route path=":id" element={<ProductDetail />} />
+        </Route>
+        <Route path="cart" element={<Cart />} />
+        <Route path="login" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
+  );
 }
 
 export default App;
