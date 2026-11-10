@@ -1,14 +1,16 @@
 import { NavLink } from "react-router";
 import { useAuth } from "../context/AuthContext";
+import { useCartStore, selectItemCount } from "../store/cartStore";
 
 function NavBar() {
   const { user, logOut } = useAuth();
+  const itemCount = useCartStore(selectItemCount);
 
   return (
     <nav className="navbar">
       <NavLink to="/" end>Home</NavLink>
       <NavLink to="/products">Products</NavLink>
-      <NavLink to="/cart">Cart</NavLink>
+      <NavLink to="/cart">Cart ({itemCount})</NavLink>
 
       <div className="navbar-right">
         {user ? (

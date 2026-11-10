@@ -1,10 +1,12 @@
 import { useParams, useNavigate, Link } from "react-router";
 import useFetch from "../hooks/useFetch";
 import { fetchProduct } from "../api/productsApi";
+import { useCartStore } from "../store/cartStore";
 
 function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const addItem = useCartStore((state) => state.addItem);
   const { loading, error, data: product } = useFetch(
     (signal) => fetchProduct(id, signal),
     [id]
@@ -33,7 +35,7 @@ function ProductDetail() {
       <p>{product.description}</p>
       <p>Category: {product.category}</p>
       <p>Price: ${product.price}</p>
-      <button>Add to cart</button>
+      <button onClick={() => addItem(product)}>Add to cart</button>
       <Link to={`/products/${nextId}`}>Next product →</Link>
     </div>
   );

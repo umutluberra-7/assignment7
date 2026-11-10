@@ -119,3 +119,8 @@ footer {
   font-weight: bold;
   font-size: 18px;
 }
+
+.product-card button {
+  display: block;
+  margin-top: 8px;
+}
