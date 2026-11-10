@@ -91,3 +91,31 @@ footer {
   gap: 12px;
   align-items: center;
 }
+
+.cart-list {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.cart-title {
+  flex: 1;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart-total {
+  font-weight: bold;
+  font-size: 18px;
+}
