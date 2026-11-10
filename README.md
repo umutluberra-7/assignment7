@@ -1,16 +1,58 @@
-# React + Vite
+# Web Programming – Assignment 7: Online Shop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A multi-page React shop built with Vite, react-router, Context + useReducer and Zustand.
+Products come from the DummyJSON API.
 
-Currently, two official plugins are available:
+## How to run
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+## Demo account
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Username: 230408024@st.biruni.edu.tr
+- Password: demo123456
 
-## Expanding the ESLint configuration
+## File organization
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+src/
+ ├─ api/
+ │   ├─ productsApi.js     # fetchProducts / fetchProduct (fetch + AbortSignal, checks response.ok)
+ │   └─ authApi.js         # fake login, resolves after ~500 ms
+ ├─ hooks/
+ │   ├─ useFetch.js        # loading / error / data with useReducer, aborts on change or unmount
+ │   └─ useLocalStorage.js # useState-like hook that persists to localStorage (used for theme)
+ ├─ context/
+ │   └─ AuthContext.jsx    # AuthProvider + useAuth, reducer with LOGGED_IN / LOGGED_OUT
+ ├─ store/
+ │   └─ cartStore.js       # Zustand cart store, derived selectors, persisted via subscribe
+ ├─ components/
+ │   ├─ Layout.jsx         # navbar + <Outlet /> + footer, applies the theme class
+ │   ├─ NavBar.jsx         # NavLinks, cart count, login/logout, theme toggle
+ │   ├─ ProductCard.jsx    # one product in the list
+ │   └─ ProtectedRoute.jsx # redirects to /login when signed out
+ ├─ pages/
+ │   ├─ Home.jsx
+ │   ├─ ProductList.jsx    # filters stored in the URL query string
+ │   ├─ ProductDetail.jsx  # reads :id from the URL
+ │   ├─ Cart.jsx
+ │   ├─ Login.jsx
+ │   └─ NotFound.jsx
+ ├─ App.jsx                # route configuration (nested /products routes)
+ └─ main.jsx               # BrowserRouter + AuthProvider
+```
+
+## Reasoning questions
+
+_To be written._
+
+## Self-study notes
+
+_To be written._
+
+## Challenges
+
+_To be written._
