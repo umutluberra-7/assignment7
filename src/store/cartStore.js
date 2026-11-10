@@ -1,7 +1,20 @@
 import { create } from "zustand";
 
+const STORAGE_KEY = "cart-items";
+
+function loadItems() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
 export const useCartStore = create((set) => ({
-  items: [],
+  items: loadItems(),
 
   addItem: (product) =>
     set((state) => {
@@ -49,6 +62,12 @@ export const useCartStore = create((set) => ({
 
   clear: () => set({ items: [] }),
 }));
+
+useCartStore.subscribe((state, prevState) => {
+  if (state.items !== prevState.items) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state.items));
+  }
+});
 
 export const selectItemCount = (state) =>
   state.items.reduce((sum, item) => sum + item.quantity, 0);
