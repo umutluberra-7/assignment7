@@ -2,7 +2,7 @@ import { NavLink } from "react-router";
 import { useAuth } from "../context/AuthContext";
 import { useCartStore, selectItemCount } from "../store/cartStore";
 
-function NavBar() {
+function NavBar({ theme, onToggleTheme }) {
   const { user, logOut } = useAuth();
   const itemCount = useCartStore(selectItemCount);
 
@@ -13,6 +13,9 @@ function NavBar() {
       <NavLink to="/cart">Cart ({itemCount})</NavLink>
 
       <div className="navbar-right">
+        <button onClick={onToggleTheme}>
+          {theme === "light" ? "🌙 Dark" : "☀️ Light"}
+        </button>
         {user ? (
           <>
             <span>{user.username}</span>
