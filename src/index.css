@@ -63,3 +63,13 @@ footer {
   padding: 8px;
   font-size: 14px;
 }
+.product-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 500px;
+}
+
+.product-detail img {
+  width: 250px;
+}
