@@ -73,3 +73,14 @@ footer {
 .product-detail img {
   width: 250px;
 }
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+}
+
+.login-form input {
+  padding: 8px;
+}
