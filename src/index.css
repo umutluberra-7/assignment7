@@ -51,3 +51,15 @@ footer {
 .error {
   color: red;
 }
+
+.filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.filters input,
+.filters select {
+  padding: 8px;
+  font-size: 14px;
+}
